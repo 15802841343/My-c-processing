@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdio.h>
+int main(int argc, const char * argv[]) {
+    int number = 0;
+    int n = 0;
+    char *most_popular_colors[1000] = {NULL};
+    scanf("%d",&number);
+    while (number) {
+        char *all_colors[number];
+        for (int i = 0; i<number; i++) {
+            scanf("%s",all_colors+i);
+        }
+        
+        int count[number];
+        
+        for (int i = 0; i<number; i++) {
+            count[i] = 1;
+        }
+        for (int i = 0; i<number; i++) {
+            for (int j = i+1; j<number; j++) {
+                if (strcmp(all_colors+i, all_colors+j) == 0) {
+                    count[j]++;
+                }
+            }
+        }
+        int max = count[0],xiabiao = 0;
+        for (int i = 0; i<number; i++) {
+            if (count[i] > max) {
+                max = count[i];
+                xiabiao = i;
+            }
+        }
+        most_popular_colors[n++] = all_colors[xiabiao];
+        scanf("%d",&number);
+    }
+    for (int i = 0; i<n; i++) {
+        printf("%s\n",most_popular_colors+i);
+    }
+    
+    
+    return 0;
+}
