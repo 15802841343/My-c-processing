@@ -1,0 +1,40 @@
+//最大子序列
+int MaxSequence(int a[],int len){
+    int max = a[0],this_max = 0;
+    for (int  i =0; i<len; i++) {
+        this_max += a[i];
+        if (this_max > max) {
+            max = this_max;
+        }
+    }
+    return max;
+}
+
+
+//最小正子序列
+int MinPositiveSequence(int a[],int len){
+    int min,this_min = 0;
+    min = MaxSequence(a, len);
+    for (int  i =0; i<len; i++) {
+        this_min += a[i];
+        if (this_min<min && this_min>0) {
+            min = this_min;
+        }
+    }
+    return min;
+}
+
+
+//最大子序列乘积
+int MaxSequenceMultipication(int *a,int len){
+    int max,this_max;
+    max = a[0];
+    this_max = 1;
+    for (int i = 0; i<len; i++) {
+        this_max *= a[i];
+        if (this_max > max) {
+            max = this_max;
+        }
+    }
+    return max;
+}
