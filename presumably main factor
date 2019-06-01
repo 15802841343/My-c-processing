@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+    int *A = malloc(sizeof(int)*20);
+    int *B = malloc(sizeof(int)*20);
+    int countA = 0,countB = 0;
+    while (scanf("%d",A+countA)) {
+        countA++;
+    }
+    //现在有countA个元素
+    for (int  i = 0; i<countA; i++) {
+        printf("%d",A[i]);
+    }
+    putchar('\n');
+    int i;
+    for (i = 0; i<countA-1; i+=2) {
+        if (A[i] == A[i+1]) {
+            B[countB++] = A[i];
+        }
+    }
+    if (countA%2 != 0) {
+        B[countB++] = A[countA-1];
+    }
+    for (int  i = 0; i<countB; i++) {
+        printf("%d",B[i]);
+    }
+    putchar('\n');
+    
+    while (countB>2) {
+        for (int  i = 0; i<countB; i++) {
+            A[i] = B[i];
+        }
+        countA = countB;// 不能把b的指针直接给a的指针，这样 会发生内存泄漏！！！
+        countB = 0;
+        
+        for (int  i = 0; i<countA; i++) {
+            printf("%d",A[i]);
+        }
+        putchar('\n');
+        int i;
+        for (i = 0; i<countA-1; i+=2) {
+            if (A[i] == A[i+1]) {
+                B[countB++] = A[i];
+            }
+        }
+        if (countA%2 != 0) {
+            B[countB++] = A[countA-1];
+        }
+        for (int  i = 0; i<countB; i++) {
+            printf("%d",B[i]);
+        }
+        putchar('\n');
+    }
