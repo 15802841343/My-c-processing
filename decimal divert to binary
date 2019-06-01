@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+    int *array = malloc(100*sizeof(char));
+    int x = 0;
+    scanf("%d",&x);
+    printf("binary expression x = ");
+    int i = 0;
+    while (x>0) {
+        if (x%2 == 1) {
+            array[i++] = '1';
+            x = x/2;
+        }else{
+            array[i++] = '0';
+            x = x/2;
+        }
+    }
+    for (int  k = i-1; k>=0; k--) {
+        printf("%c",*(array+k));
+    }
+    putchar('\n');
+    
+
+    
+    return 0;
+}
