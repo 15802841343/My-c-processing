@@ -36,8 +36,10 @@ void deleteNode(LoopList L,int n){
         L = head;
         // 将第一个节点删除
         tail->next = head->next;
+        //一旦删除该节点要将l的位置更新
+        L = ptr->next;
         free(ptr);
-        //一旦删除该节点要报告
+        
     }else{
         //找到要删除节点的前一个节点
         for (int i = 1; i<n; i++) {
@@ -46,6 +48,8 @@ void deleteNode(LoopList L,int n){
         PtrNode ptrlast = ptr;
         ptr = ptr->next;
         ptrlast->next = ptr->next;
+        //一旦删除该节点要将l的位置更新
+        L = ptr->next;
         free(ptr);
     }
 }
